@@ -1,5 +1,9 @@
 <template>
-  <div :id="cellId" class="m-1 pt-1 px-1 rounded-1 border border-primary">
+  <div
+    @click="printInfo"
+    :id="cellId"
+    class="m-1 pt-1 px-1 rounded-1 border border-primary"
+  >
     <p class="test-param">{{ pop }}</p>
     <p class="test-param">{{ fert }}</p>
     <p class="test-param">{{ tech }}</p>
@@ -24,7 +28,9 @@ fert.value = computed(() => store.getters.map[cellId.value].fert.toFixed(2));
 const tech = ref();
 tech.value = computed(() => store.getters.map[cellId.value].tech.toFixed(2));
 
-// const map = computed(() => store.getters.map);
+function printInfo() {
+  console.log(store.getters.map[cellId.value].localRel);
+}
 </script>
 
 <style scoped>
