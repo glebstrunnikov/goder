@@ -79,6 +79,7 @@ function createZeroRel() {
         relId: "id1",
         relPower: 0,
         relVirality: 0,
+        relColor: "rgb(255,255,255)",
       },
     });
   }
@@ -96,6 +97,9 @@ function createRel(power, virality) {
       relId: `id${religions.value.length + 1}`,
       relPower: parseFloat(power),
       relVirality: parseFloat(virality),
+      relColor: `rgb(${Math.floor(Math.random() * 255)},${Math.floor(
+        Math.random() * 255
+      )},${Math.floor(Math.random() * 255)})`,
     },
   });
 }

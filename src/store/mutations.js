@@ -92,10 +92,10 @@ export default {
   },
   endTurnConvertSpread(state, payload) {
     if (payload.cellId == "cell1x1" || payload.cellId == "cell1x2") {
-      console.log(state.map[payload.cellId].localRel);
+      console.log(payload.cellId, state.map[payload.cellId].localRel);
     }
     const cellMates = global.findCellMates(payload.cellId);
-    console.log(cellMates, state.map[payload.cellId].localRel);
+    // console.log(cellMates, state.map[payload.cellId].localRel);
     cellMates.forEach((cellMate) => {
       for (const religion in state.map[payload.cellId].localRel) {
         const virality = state.religions.find(
@@ -117,14 +117,14 @@ export default {
     }
   },
   endTurnConvertAfterSpread(state, payload) {
-    if (payload.cellId == "cell1x1") {
-      console.log(state.map[payload.cellId].localRel);
-    }
+    // if (payload.cellId == "cell1x1") {
+    //   console.log(state.map[payload.cellId].localRel);
+    // }
 
     state.religions.forEach((el) => {
       state.map[payload.cellId].localRel[el.relId] +=
         state.map[payload.cellId].localRel[el.relId] * el.relPower;
-      console.log(state.map[payload.cellId].localRel[el.relId]);
+
       if (state.map[payload.cellId].localRel[el.relId] < global.globalMinRel) {
         state.map[payload.cellId].localRel[el.relId] = 0;
       }
@@ -134,9 +134,9 @@ export default {
       }
       for (const el in state.map[payload.cellId].localRel) {
         state.map[payload.cellId].localRel[el] /= sharesModSum;
-        if (payload.cellId == "cell1x1") {
-          console.log(state.map[payload.cellId].localRel);
-        }
+        // if (payload.cellId == "cell1x1") {
+        //   console.log(state.map[payload.cellId].localRel);
+        // }
       }
     });
   },
